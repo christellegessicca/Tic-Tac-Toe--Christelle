@@ -2,9 +2,7 @@
 
 # browser-template
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+Tic- Tac- Toe
 
 ## Installation
 
@@ -127,3 +125,4 @@ Developers should run these often!
 1. All content is licensed under a CC­BY­NC­SA 4.0 license.
 1. All software code is licensed under GNU GPLv3. For commercial use or
     alternative licensing, please contact legal@ga.co.
+# Tic-Tac-Toe--Christelle
