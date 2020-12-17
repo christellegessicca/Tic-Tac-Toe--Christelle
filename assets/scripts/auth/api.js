@@ -12,23 +12,25 @@ const signIn = function (formData) {
   })
 }
 
-const signOut = function () {
+const signOut = function (data) {
   return $.ajax({
-    url: config.apiUrl,
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      Autorization: 'Bearer ' + store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
   })
 }
 
-const changePassword = function () {
+const changePassword = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
+    data: formData,
     headers: {
-      Autorization: 'Bearer ' + store.user.token
+      Authorization: 'Bearer ' + store.user.token
     }
+
   })
 }
 

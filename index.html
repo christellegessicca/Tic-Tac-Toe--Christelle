@@ -14,42 +14,45 @@
 </head>
 
 <body>
-  <h1>Tic Tac Toe</h1>
+  <h1>Welcome To Tic Tac Toe</h1>
   <p id="message"></p>
-  <form id="sign-up">
-    <input type="text" name="credentials[email]" placeholder="email">
-    <input type="password" name="credentials[password]" placeholder="password">
-    <input type="password" name="credentials[password_confirmation]" placeholder="Confrim-password">
+
+  <form id="sign-in" class="unauthenticated">
+    <input type="text" id="loginbox1" name="credentials[email]" placeholder="Email">
+    <input type="password" id="loginbox2" name="credentials[password]" placeholder="Password">
+    <button type="submit" id="signinb" name="sign-in">Sign In</button>
+  </form>
+  <form id="sign-up" class="unauthenticated">
+    <input type="text" id="signbox1" name="credentials[email]" placeholder="email">
+    <input type="password" id="signbox2" name="credentials[password]" placeholder="password">
+    <input type="password" id="signbox3" name="credentials[password_confirmation]" placeholder="Confrim-password">
     <button type="submit" name="sign up">Sign Up</button>
   </form>
-  <form id="sign-in">
-    <input type="text" name="credentials[email]" placeholder="Email">
-    <input type="password" name="credentials[password]" placeholder="Password">
-    <button type="submit" name="sign-in">Sign In</button>
+  <form id="change-password" class="authenticated">
+    <input type="password" id="loginform3" name="passwords[old]" placeholder="old-password">
+    <input type="password" id="loginform4" name="passwords[new]" placeholder=" new-password">
+    <button type="submit">Change Password</button>
   </form>
-  <form id="change-password">
-    <input type="text" password="credentials[password]" placeholder="password">
-    <input type="password" name="credentials[password]" placeholder="Password">
-    <button type="submit" name="change-password">Change Password</button>
+  <form id="sign-out" class="authenticated">
+
+    <button type="button" id="signoutb" name="sign-out">Sign Out</button>
   </form>
-  <form id="sign-out">
-    <button type="submit" name="sign-out">Sign Out</button>
-  </form>
-  <form id="new-game">
-    <button type="click">New Game</button>
-  </form>
-  <div id="game-board">
+
+
+  <button id="new-game" class="authenticated" type="button">New Game</button>
+  <div id="game-board" class="game-board">
     <div class="row">
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
-      <div class="col-4 box"></div>
+      <div class="col-4 box" data-cell-index='0'></div>
+      <div class="col-4 box" data-cell-index='1'></div>
+      <div class="col-4 box" data-cell-index='2'></div>
+      <div class="col-4 box" data-cell-index='3'></div>
+      <div class="col-4 box" data-cell-index='4'></div>
+      <div class="col-4 box" data-cell-index='5'></div>
+      <div class="col-4 box" data-cell-index='6'></div>
+      <div class="col-4 box" data-cell-index='7'></div>
+      <div class="col-4 box" data-cell-index='8'></div>
     </div>
+
   </div>
 </body>
 

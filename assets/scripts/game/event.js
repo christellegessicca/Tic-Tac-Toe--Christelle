@@ -1,18 +1,52 @@
-const ui require = ('./ui')
-const api require = ('./api')
-const getFormFields = require('./../../lib/get-form-fields')
+const api = require('./api')
+const ui = require('./ui')
 
-const onNewGame = function(event) {
+const onNewGame = function (event) {
   event.preventDefault()
 
-  const form = event.target
-  const data = getFormFields(form)
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
-  api.newGame(data)
-    .then(ui.onNewGame)
-    .catch(ui.onNewGame)
+// const onUpdateGame = function (event) {
+//   event.preventDefault()
+//   api.updateGame()
+//     .then(ui.updateGameSuccess)
+//     .catch(ui.updateGameFailure)
+// }
+
+const onNumOfGamesPlayed = function (event) {
+  event.preventDefault()
+  api.numOfGamesPlayed()
+    .then(ui.numOfGamesPlayedSuccess)
+    .catch(ui.numOfGamesPlayedFailure)
+}
+
+let turnCount = 2
+const onSelect = function (event) {
+  const selectedBox = event.target
+  const onSelectIndex = $(selectedBox).data('cell-index')
+let value
+
+  if (turnCount % 2 === 0) {
+    value = 'x'
+  } else {
+    value = 'o'
+  }
+
+  if ($(selectedBox).text === '') {
+    turnCount++
+    $(selectedBox).text(value)
+    api.updateGame(onSelectIndex, value)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
+
+  }
 }
 
 module.exports = {
-  onNewGame
+  onNewGame,
+  onNumOfGamesPlayed,
+  onSelect
 }
