@@ -4,7 +4,8 @@ const store = require('./../templates/store')
 
 const newGameSuccess = function (response) {
   $('#message').text('Game is in session')
-  $('#game-board').show()
+  $('.game-board').show()
+  $('.box').text('')
   store.game = response.game
 }
 
@@ -27,10 +28,20 @@ const numOfGamesPlayedSuccess = function (response) {
   $('.authenticated').show()
 }
 
+const winnerIs = function (response) {
+  $('message').text('The winner is: ' + response)
+  $('.authenticated').show()
+}
+
+const winnerError = function () {
+  $('#message').text('Failed to gget number of games played')
+}
 module.exports = {
   newGameFailure,
   newGameSuccess,
   updateGameSuccess,
   updateGameFailure,
-  numOfGamesPlayedSuccess
+  numOfGamesPlayedSuccess,
+  winnerIs,
+  winnerError
 }

@@ -36,6 +36,8 @@ const onSignOutSuccess = function (response) {
   $('form').trigger('reset')
   $('.unauthenticated').show()
   $('.authenticated').hide()
+  $('#game-board').hide()
+  $('.box').text('')
 }
 
 const onSignOutFailure = function (error) {

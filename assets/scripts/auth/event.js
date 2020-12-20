@@ -3,6 +3,7 @@ const getFormFields = require('./../../../lib/get-form-fields')
 const ui = require('./ui')
 
 const onSignUp = function (event) {
+  // prevents page from refreshing
   event.preventDefault()
 
   // Get data from form

@@ -53,8 +53,7 @@ const numOfGamesPlayed = function () {
 }
 module.exports = {
   newGame,
-  // updateGame,
+  updateGame,
   numOfGamesPlayed,
-  newGameGet,
-  updateGame
+  newGameGet
 }
