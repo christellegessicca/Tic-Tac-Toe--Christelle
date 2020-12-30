@@ -26,6 +26,11 @@ const updateGameFailure = function (error) {
 const numOfGamesPlayedSuccess = function (response) {
   $('#message').text('Number of games played: ' + response)
   $('.authenticated').show()
+  store.game = response.game
+}
+
+const numOfGamesPlayedFailure = function (error) {
+  $('#message').text('Number of games played failed' + error.responseJSON.message)
 }
 
 const winnerIs = function (response) {
@@ -34,7 +39,7 @@ const winnerIs = function (response) {
 }
 
 const winnerError = function () {
-  $('#message').text('Failed to gget number of games played')
+  $('#message').text('Failed to get number of games played')
 }
 module.exports = {
   newGameFailure,
@@ -42,6 +47,7 @@ module.exports = {
   updateGameSuccess,
   updateGameFailure,
   numOfGamesPlayedSuccess,
+  numOfGamesPlayedFailure,
   winnerIs,
   winnerError
 }
