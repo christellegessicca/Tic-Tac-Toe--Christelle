@@ -1,7 +1,7 @@
 const api = require('./api')
 const ui = require('./ui')
 
-const onNewGame = function(event) {
+const onNewGame = function (event) {
   event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
@@ -9,7 +9,7 @@ const onNewGame = function(event) {
 }
 // declared a global scope in order for turnCount to reset everytime
 let turnCount = 2
-const onSelectedBox = function(event) {
+const onSelectedBox = function (event) {
   event.preventDefault()
   const selectedBox = event.target
   const onSelectedIndex = $(selectedBox).data('cell-index')
@@ -28,36 +28,41 @@ const onSelectedBox = function(event) {
   } else if ($(selectedBox).text() === '1') {
     ui.updateGameFailure()
   }
-}
 
-const onWinnerIs = function(event) {
-  event.preventDefault()
-  const winner = event.target
-  const onWinner = $(winner).data('cell-index')
-  let playerX
-  let playerO
-  const eightWinningComb = [
-    ($(onWinner) === '0', '1', '2')
-    ($(onWinner) === '3', '4', '5')
-    ($(onWinner) === '6', '7', '8')
-    ($(onWinner) === '0', '5', '7')
-    ($(onWinner) === '1', '4', '7')
-    ($(onWinner) === '2', '6', '8')
-    ($(onWinner) === '0', '4', '8')
-    ($(onWinner) === '6', '4', '3')
+  const player1 = 'x'
+  const player2 = 'o'
+  const winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
   ]
+  const onWinner = function (winningConditions, event) {
+    const curPlayer = event.target
 
-  if (playerX = eightWinningComb) {
-      .then(ui.winnerIs)
-      .catch(ui.winnerError)
-  }
-  if (playerO = eightWinningComb) {
-    .then(ui.winnerIs)
-      .catch(ui.)
+    if (player1 === winningConditions.data('cell-index')) {
+    // .then(ui.winnerIsX)
+    //   .catch(ui.winnerErrorX)
+    // console.log('player 1 won')
+      //  ui.winnerIsX()
+      // alert(winningConditions.data())
+    }
+
+    if (player2 === winningConditions.data('cell-index')) {
+      console.log('I made it here')
+    // console.log('player 2 won')
+    // .then(ui.winnerIsO)
+    //   .catch(ui.winnerErrorO)
+      //  ui.winnerIsO()
+    }
   }
 }
 
-const onNumOfGamesPlayed = function(event) {
+const onNumOfGamesPlayed = function (event) {
   event.preventDefault()
   api.numOfGamesPlayed()
     .then(ui.numOfGamesPlayedSuccess)
@@ -67,6 +72,5 @@ const onNumOfGamesPlayed = function(event) {
 module.exports = {
   onNewGame,
   onNumOfGamesPlayed,
-  onSelectedBox,
-  onWinner
+  onSelectedBox
 }

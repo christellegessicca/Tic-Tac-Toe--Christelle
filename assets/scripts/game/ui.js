@@ -1,12 +1,14 @@
 'use strict'
 
 const store = require('./../templates/store')
+// const winnerIs = require('./event')
 
 const newGameSuccess = function (response) {
   $('#message').text('Game is in session')
   $('.game-board').show()
   $('.box').text('')
   store.game = response.game
+  // let reset = 2
 }
 
 const newGameFailure = function (error) {
@@ -17,6 +19,7 @@ const newGameFailure = function (error) {
 const updateGameSuccess = function (response) {
   $('#message').text('Game is updated')
   store.game = response.game
+  // winnerIs.onWinner()
 }
 
 const updateGameFailure = function (error) {
@@ -24,7 +27,7 @@ const updateGameFailure = function (error) {
 }
 
 const numOfGamesPlayedSuccess = function (response) {
-  $('#message').text('Number of games played: ' + response)
+  $('#message').text('Number of games played: ' + response.game)
   $('.authenticated').show()
   store.game = response.game
 }
@@ -33,12 +36,21 @@ const numOfGamesPlayedFailure = function (error) {
   $('#message').text('Number of games played failed' + error.responseJSON.message)
 }
 
-const winnerIs = function (response) {
-  $('message').text('The winner is: ' + response)
+const winnerIsX = function (response) {
+  $('message').data('The winner is: X ' + response)
   $('.authenticated').show()
 }
 
-const winnerError = function () {
+const winnerErrorX = function () {
+  $('#message').text('Failed to get number of games played')
+}
+
+const winnerIsO = function (response) {
+  $('message').data('The winner is: O ' + response)
+  $('.authenticated').show()
+}
+
+const winnerErrorO = function () {
   $('#message').text('Failed to get number of games played')
 }
 module.exports = {
@@ -48,6 +60,8 @@ module.exports = {
   updateGameFailure,
   numOfGamesPlayedSuccess,
   numOfGamesPlayedFailure,
-  winnerIs,
-  winnerError
+  winnerIsX,
+  winnerErrorX,
+  winnerIsO,
+  winnerErrorO
 }

@@ -18,6 +18,6 @@ $(() => {
   $('#new-game').on('click', newGameEvents.onNewGame)
   $('.box').on('click', newGameEvents.onSelectedBox)
   $('#games-played').on('click', newGameEvents.onNumOfGamesPlayed)
-  $('.data').on('click', newGameEvents.onWinnerIs)
+
   // $('game-board').on('click', newGameEvents.onSelectedIndex)
 })
